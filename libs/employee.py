@@ -1,3 +1,5 @@
+import requests
+
 class Employee:
     
     raise_amount = 1.04
@@ -29,8 +31,22 @@ class Employee:
         self.first = None
         self.last = None
 
+    def monthly_schedule(self, month):
+        response = requests.get(f'http://company.com/{self.last}/{month}')
+        if response.ok:
+            return response.text
+        else:
+            return 'Bad response!'
+
+
     def apply_raise(self):
         self.pay = int(self.pay * self.raise_amount)
+
+    def pay_per_months(self, months):
+        if months == 0:
+            raise ValueError("Can not divide by zero")
+        else:
+            return self.pay / months
 
     @classmethod
     def set_raise_amt(cls, amount): # Receives class as argument
