@@ -32,7 +32,7 @@ class Employee:
         self.last = None
 
     def monthly_schedule(self, month):
-        response = requests.get(f'http://company.com/{self.last}/{month}')
+        response = requests.get("http://company.com/{}/{}".format(self.last, month))
         if response.ok:
             return response.text
         else:
