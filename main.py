@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(1, './libs')
+sys.path.append('./libs')
 
 from developer import Developer
 from manager import Manager
@@ -14,6 +14,8 @@ def main():
     mgr_1.print_emps()
 
     print("using __add__ : {}".format(dev_1 + dev_2)) # uses the __add__ method in Employee
+
+    print(mgr_1.pay_per_months(2))
 
 if __name__ == '__main__':
     main()
